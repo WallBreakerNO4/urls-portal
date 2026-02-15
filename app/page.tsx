@@ -59,8 +59,6 @@ export default function Page() {
           <a
             key={`${item.name}-${item.url}`}
             href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
             className="focus-visible:ring-ring/40 rounded-xl outline-none focus-visible:ring-4"
             style={{ animationDelay: `${index * 40}ms` }}
           >
