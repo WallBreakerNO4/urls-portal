@@ -1,4 +1,10 @@
 [
-  {"name": "Google", "url": "https://google.com"},
-  {"name": "Self-host 1", "url": "http://localhost:3000"}
+    {
+        "name": "ComfyUI-localhost",
+        "url": "http://localhost:8188"
+    },
+    {
+        "name": "Speedometer3.1",
+        "url": "https://browserbench.org/Speedometer3.1/"
+    }
 ]
