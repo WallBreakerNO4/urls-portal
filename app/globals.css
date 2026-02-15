@@ -80,6 +80,10 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --portal-glow-1: oklch(0.83 0.10 230 / 25%);
+  --portal-glow-2: oklch(0.97 0 0 / 70%);
+  --portal-dots: oklch(0.205 0 0 / 6%);
 }
 
 .dark {
@@ -114,6 +118,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --portal-glow-1: oklch(0.68 0.15 237 / 18%);
+  --portal-glow-2: oklch(0.205 0 0 / 40%);
+  --portal-dots: oklch(1 0 0 / 8%);
 }
 
 @layer base {
@@ -121,6 +129,44 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+
+    background-image:
+      radial-gradient(700px 420px at 12% 10%, var(--portal-glow-1), transparent 65%),
+      radial-gradient(900px 520px at 88% 14%, var(--portal-glow-2), transparent 70%),
+      radial-gradient(circle at 1px 1px, var(--portal-dots) 1px, transparent 0);
+    background-size: auto, auto, 18px 18px;
+    background-position: 0 0, 0 0, -2px -2px;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .portal-card {
+    @apply animate-in fade-in-0 slide-in-from-bottom-2;
+    @apply ring-foreground/10 bg-card/70 shadow-[0_10px_26px_rgba(25,33,38,0.10)] dark:shadow-[0_14px_34px_rgba(0,0,0,0.42)];
+    @apply transition-all duration-200 will-change-transform;
+    @apply hover:-translate-y-0.5 hover:ring-foreground/20;
+  }
+
+  .portal-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, transparent 0%, color-mix(in oklab, var(--primary) 14%, transparent) 100%);
+    opacity: 0;
+    transition: opacity 200ms ease;
+    pointer-events: none;
+  }
+
+  .portal-card:hover::before {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-card {
+    animation: none !important;
+    transition: none !important;
   }
 }

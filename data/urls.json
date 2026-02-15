@@ -1,0 +1,4 @@
+[
+  {"name": "Google", "url": "https://google.com"},
+  {"name": "Self-host 1", "url": "http://localhost:3000"}
+]

@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+这是一个可静态导出的 URL 门户站点（Next.js + `output: "export"`）。
 
 ## Getting Started
 
@@ -15,6 +15,25 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 配置 URL
+
+编辑 `data/urls.json`：
+
+```json
+[
+  {"name": "Google", "url": "https://google.com"},
+  {"name": "Self-host 1", "url": "http://localhost:3000"}
+]
+```
+
+## 静态导出
+
+构建后静态产物输出在 `out/`：
+
+```bash
+pnpm build
+```
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
