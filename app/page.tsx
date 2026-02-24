@@ -1,7 +1,5 @@
 import Link from "next/link"
 
-import urlsJson from "@/data/urls.json"
-
 import { PortalShell } from "@/components/portal-shell"
 import {
   Card,
@@ -9,10 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { normalizePortalItems } from "@/lib/portal"
+import { loadPortalData } from "@/lib/portal"
 
 export default function Page() {
-  const items = normalizePortalItems(urlsJson)
+  const items = loadPortalData()
 
   return (
     <PortalShell>

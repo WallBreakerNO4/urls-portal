@@ -3,8 +3,6 @@ import { Fragment } from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-import urlsJson from "@/data/urls.json"
-
 import { PortalShell } from "@/components/portal-shell"
 import {
   Breadcrumb,
@@ -23,7 +21,7 @@ import {
 import {
   findFolderTrailByPath,
   listFolderPaths,
-  normalizePortalItems,
+  loadPortalData,
 } from "@/lib/portal"
 
 type FolderPageProps = {
@@ -32,7 +30,7 @@ type FolderPageProps = {
   }>
 }
 
-const portalItems = normalizePortalItems(urlsJson)
+const portalItems = loadPortalData()
 
 export function generateStaticParams() {
   return listFolderPaths(portalItems).map((slug) => ({ slug }))
