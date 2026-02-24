@@ -1,3 +1,7 @@
+import { readFileSync } from "fs"
+import { load } from "js-yaml"
+import { join } from "path"
+
 export type PortalUrlItem = {
   type: "url"
   name: string
@@ -134,4 +138,11 @@ export function findFolderTrailByPath(items: PortalItem[], path: string[]): Port
   }
 
   return trail
+}
+
+export function loadPortalData(): PortalItem[] {
+  const filePath = join(process.cwd(), "data", "urls.yaml")
+  const fileContent = readFileSync(filePath, "utf-8")
+  const parsed = load(fileContent)
+  return normalizePortalItems(parsed)
 }
